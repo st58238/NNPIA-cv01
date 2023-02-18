@@ -20,13 +20,13 @@ class HelloController {
     }
 
     @GetMapping("path")
-    fun returnString(@RequestParam path: String): String {
-        return "Got: $path"
+    fun returnString(): String {
+        return "Hello world from Spring Boot application with different \"path\"."
     }
 
     @GetMapping("query")
     fun returnQuery(@RequestParam query: String): String {
-        return "Query: $query"
+        return "Hello world from Spring Boot application with different \"path\" and param \"query\"."
     }
 
     @GetMapping("complex")
