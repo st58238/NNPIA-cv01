@@ -2,7 +2,6 @@ package cz.upce.fei.janacek.main.controller
 
 import cz.upce.fei.janacek.main.model.Complex
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
  *  a zároveň automaticky převádí response na JSON/XML.
  */
 @RestController
-@RequestMapping("/api/v1")
+//@RequestMapping("/api/v1")
 class HelloController {
 
     @GetMapping("")
