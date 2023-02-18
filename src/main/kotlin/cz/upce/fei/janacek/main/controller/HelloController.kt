@@ -1,5 +1,6 @@
 package cz.upce.fei.janacek.main.controller
 
+import cz.upce.fei.janacek.main.model.Complex
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -27,6 +28,11 @@ class HelloController {
     @GetMapping("query")
     fun returnQuery(@RequestParam query: String): String {
         return "Query: $query"
+    }
+
+    @GetMapping("complex")
+    fun returnResponseObject(): Complex {
+        return Complex((Math.random() * 100).toInt(), (Math.random() * 100).toInt())
     }
 
     /**
