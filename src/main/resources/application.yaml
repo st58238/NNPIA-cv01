@@ -12,3 +12,19 @@ spring:
   data:
     rest:
       base-path: /api/v2
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/nnpia
+    username: nnpia
+    password: nnpia
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      org:
+        hibernate:
+          dialect: PostgreSQL81Dialect
