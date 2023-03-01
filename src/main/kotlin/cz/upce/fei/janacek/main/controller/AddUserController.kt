@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDateTime
 
 @RestController
-@RequestMapping("/app-user")
+@RequestMapping("/add-user")
 class AddUserController (
     private val appUserRepository: AppUserRepository
 ) {

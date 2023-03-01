@@ -5,11 +5,12 @@ import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
 
 @Entity
 data class Task (
     @Id
-    val id: Int,
+    val id: Long,
     @Column
     val title: String,
     @Column
@@ -18,7 +19,8 @@ data class Task (
     val creationDate: LocalDateTime,
     @Column
     val updateDate: LocalDateTime,
-    @JoinColumn()
+    @ManyToOne
+    @JoinColumn(name="author_id", nullable=false)
     val author: AppUser
 ) {
 }

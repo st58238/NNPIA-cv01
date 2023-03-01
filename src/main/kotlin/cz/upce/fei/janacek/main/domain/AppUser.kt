@@ -29,7 +29,7 @@ data class AppUser (
     val updateDate: LocalDateTime,
     @OneToMany(mappedBy = "author")
     val tasks: Set<Task>,
-    @ManyToMany
+    @ManyToMany(mappedBy = "users")
     val roles: Set<Role>
 ) {
 }

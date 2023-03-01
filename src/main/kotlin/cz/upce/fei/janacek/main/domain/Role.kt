@@ -5,10 +5,15 @@ import javax.persistence.*
 @Entity
 data class Role (
     @Id
-    val id: Int,
+    val id: Long,
     @Column
     val name: String,
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany
+    @JoinTable(
+        name = "app_user_role",
+        joinColumns = [JoinColumn(name = "role_id")],
+        inverseJoinColumns = [JoinColumn(name = "app_user_id")]
+    )
     val users: Set<AppUser>
 ) {
 }
