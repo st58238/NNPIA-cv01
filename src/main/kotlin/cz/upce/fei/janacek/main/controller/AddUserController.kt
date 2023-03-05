@@ -20,6 +20,6 @@ class AddUserController (
 
     @GetMapping("/add")
     fun addNewUser() {
-        //appUserRepository.save(AppUser(1, "string", "pass", true, LocalDateTime.now(), LocalDateTime.now()))
+        appUserRepository.save(AppUser(1, "string", "pass", true, LocalDateTime.now(), LocalDateTime.now(), setOf(), setOf()))
     }
 }
