@@ -1,5 +1,6 @@
 package cz.upce.fei.janacek.main.domain
 
+import cz.upce.fei.janacek.main.dto.TaskDto
 import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -18,9 +19,19 @@ data class Task (
     @Column
     val creationDate: LocalDateTime,
     @Column
-    val updateDate: LocalDateTime,
+    val updateDate: LocalDateTime?,
     @ManyToOne
     @JoinColumn(name="author_id", nullable=false)
     val author: AppUser
-) {
+)
+
+fun Task.toDto(): TaskDto {
+    return TaskDto(
+        this.id,
+        this.title,
+        this.description,
+        this.creationDate,
+        this.updateDate,
+        this.author
+    )
 }

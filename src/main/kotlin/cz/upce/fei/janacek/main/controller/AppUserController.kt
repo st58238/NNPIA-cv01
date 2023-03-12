@@ -1,8 +1,10 @@
 package cz.upce.fei.janacek.main.controller
 
 import cz.upce.fei.janacek.main.domain.AppUser
+import cz.upce.fei.janacek.main.domain.toDto
 import cz.upce.fei.janacek.main.dto.AppUserDto
 import cz.upce.fei.janacek.main.dto.AppUserInDto
+import cz.upce.fei.janacek.main.dto.toEntity
 import cz.upce.fei.janacek.main.service.AppUserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -37,7 +39,7 @@ class AppUserController (
     @PostMapping("")
     fun create(
         @RequestBody
-        @Validated(AppUserInDto::class)
+        @Validated
         userDto: AppUserInDto
     ): ResponseEntity<AppUserDto> {
         val result = appUserService.create(userDto.toEntity())
@@ -52,7 +54,7 @@ class AppUserController (
         @Validated
         userDto: AppUserInDto
     ): ResponseEntity<AppUserDto> {
-        val result = appUserService.change(id, userDto.toEntity())
+        val result = appUserService.change(id, userDto.toEntity(id))
         return ResponseEntity<AppUserDto>(result.toDto(), HttpStatus.ACCEPTED)
     }
 
@@ -63,39 +65,5 @@ class AppUserController (
     ): ResponseEntity<Any> {
         appUserService.delete(id)
         return ResponseEntity.noContent().build()
-    }
-
-    companion object {
-        private fun AppUser.toDto(): AppUserDto {
-            return AppUserDto(
-                this.id!!,
-                this.username,
-                this.password,
-                this.active,
-                this.creationDate,
-                this.updateDate
-            )
-        }
-
-        private fun AppUserInDto.toEntity(): AppUser {
-            return AppUser(
-                this.username,
-                this.password,
-                this.active,
-                this.creationDate,
-                this.updateDate
-            )
-        }
-
-        private fun AppUserInDto.toEntityWithId(id: Long): AppUser {
-            return AppUser(
-                id,
-                this.username,
-                this.password,
-                this.active,
-                this.creationDate,
-                this.updateDate
-            )
-        }
     }
 }

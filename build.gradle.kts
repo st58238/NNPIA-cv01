@@ -42,6 +42,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.boot:spring-boot-starter-validation:2.7.8")
+    implementation("org.springframework.boot:spring-boot-starter-graphql")
+    testImplementation("org.springframework:spring-webflux")
+    testImplementation("org.springframework.graphql:spring-graphql-test")
 }
 
 tasks.withType<KotlinCompile> {

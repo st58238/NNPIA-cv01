@@ -1,0 +1,43 @@
+type AppUser {
+    id: ID!
+    username: String!
+    password: String!
+    active: Boolean!
+    creationDate: LocalDateTime!
+    updateDate: LocalDateTime
+    tasks: [Task!]!
+    roles: [Role!]
+}
+
+input AppUserInput {
+    username: String!
+    password: String!
+    creationDate: LocalDateTime!
+}
+
+scalar LocalDateTime {
+
+}
+
+type Task {
+    id: ID!
+    title: String!
+    description: String!
+    creationDate: LocalDateTime!
+    updateDate: LocalDateTime
+    author: AppUser!
+}
+
+type Mutation {
+    addAppUser(appUserInput: AppUserInput): AppUser
+}
+
+type Role {
+    id: ID!
+    name: String!
+    users: [AppUser]
+}
+
+type Query {
+    appUser(id: ID!): AppUser!
+}

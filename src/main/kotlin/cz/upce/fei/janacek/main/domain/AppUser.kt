@@ -1,5 +1,6 @@
 package cz.upce.fei.janacek.main.domain
 
+import cz.upce.fei.janacek.main.dto.AppUserDto
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -18,7 +19,7 @@ data class AppUser (
     @Column
     val creationDate: LocalDateTime,
     @Column
-    val updateDate: LocalDateTime,
+    val updateDate: LocalDateTime?,
     @OneToMany(mappedBy = "author")
     val tasks: Set<Task> = setOf(),
     @ManyToMany(mappedBy = "users")
@@ -33,4 +34,15 @@ data class AppUser (
         updateDate: LocalDateTime
     ) : this(null, username, password, active, creationDate, updateDate, setOf(), setOf())
 
+}
+
+fun AppUser.toDto(): AppUserDto {
+    return AppUserDto(
+        this.id!!,
+        this.username,
+        this.password,
+        this.active,
+        this.creationDate,
+        this.updateDate
+    )
 }

@@ -6,12 +6,12 @@ server:
   http2:
     enabled: true
   servlet:
-    context-path: /api/v2
+    context-path: /api/v1
 
 spring:
   data:
     rest:
-      base-path: /api/v2
+      base-path: /api/v1
 
   datasource:
     url: jdbc:postgresql://localhost:5432/nnpia
@@ -28,3 +28,10 @@ spring:
       org:
         hibernate:
           dialect: PostgreSQL81Dialect
+
+  graphql:
+    path: /graphql
+    graphiql:
+      enabled: true
+      path: /graphiql
+
