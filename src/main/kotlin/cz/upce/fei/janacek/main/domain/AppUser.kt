@@ -8,7 +8,6 @@ import javax.persistence.*
 data class AppUser (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @SequenceGenerator(name = "app_user_sequence", allocationSize = 25)
     val id: Long?,
     @Column
     val username: String,
@@ -19,7 +18,7 @@ data class AppUser (
     @Column
     val creationDate: LocalDateTime,
     @Column
-    val updateDate: LocalDateTime?,
+    val updateDate: LocalDateTime? = null,
     @OneToMany(mappedBy = "author")
     val tasks: Set<Task> = setOf(),
     @ManyToMany(mappedBy = "users")
@@ -33,6 +32,8 @@ data class AppUser (
         creationDate: LocalDateTime,
         updateDate: LocalDateTime
     ) : this(null, username, password, active, creationDate, updateDate, setOf(), setOf())
+
+
 
 }
 

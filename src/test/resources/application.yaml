@@ -1,0 +1,16 @@
+
+# Veskere podporovane parametry jsou k vyhledani v oficialni dokumentaci:
+# https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+  liquibase:
+    enabled: false
+

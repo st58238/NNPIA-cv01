@@ -3,8 +3,8 @@ type AppUser {
     username: String!
     password: String!
     active: Boolean!
-    creationDate: LocalDateTime!
-    updateDate: LocalDateTime
+    creationDate: String!
+    updateDate: String
     tasks: [Task!]!
     roles: [Role!]
 }
@@ -12,19 +12,15 @@ type AppUser {
 input AppUserInput {
     username: String!
     password: String!
-    creationDate: LocalDateTime!
-}
-
-scalar LocalDateTime {
-
+    creationDate: String!
 }
 
 type Task {
     id: ID!
     title: String!
     description: String!
-    creationDate: LocalDateTime!
-    updateDate: LocalDateTime
+    creationDate: String!
+    updateDate: String
     author: AppUser!
 }
 

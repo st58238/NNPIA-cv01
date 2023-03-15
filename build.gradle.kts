@@ -33,6 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.postgresql:postgresql:42.5.4")
     implementation("org.liquibase:liquibase-core")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.projectlombok:lombok")
@@ -45,6 +46,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-graphql")
     testImplementation("org.springframework:spring-webflux")
     testImplementation("org.springframework.graphql:spring-graphql-test")
+    testImplementation("org.mockito:mockito-core")
+    testRuntimeOnly("com.h2database:h2")
 }
 
 tasks.withType<KotlinCompile> {
