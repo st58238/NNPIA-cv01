@@ -1,5 +1,6 @@
 package cz.upce.fei.janacek.main.service
 
+import cz.upce.fei.janacek.main.domain.Task
 import cz.upce.fei.janacek.main.domain.toDto
 import cz.upce.fei.janacek.main.dto.TaskDto
 import cz.upce.fei.janacek.main.repository.TaskRepository
@@ -12,5 +13,9 @@ class TaskService (
 
     fun findAllByAuthorId(id: Long): List<TaskDto> {
         return taskRepository.findAllByAuthorId(id).map { it.toDto() }
+    }
+
+    fun findAllTasks(): Iterable<Task> {
+        return taskRepository.findAll()
     }
 }
